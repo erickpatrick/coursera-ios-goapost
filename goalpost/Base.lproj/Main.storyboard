@@ -40,6 +40,9 @@
                                         <rect key="frame" x="319" y="22.666666666666671" width="59" height="46"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="addGoal" title=""/>
+                                        <connections>
+                                            <action selector="addNewGoalWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vVQ-1i-9fZ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
@@ -97,6 +100,9 @@
                             <constraint firstItem="NLG-mi-Pii" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oX1-Qt-LvL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="N6K-yF-9HN" id="pnp-Oi-NbT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
