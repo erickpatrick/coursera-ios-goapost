@@ -10,6 +10,7 @@ import UIKit
 class GoalsVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var createGoal: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
