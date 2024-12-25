@@ -58,6 +58,10 @@ class CreateGoalVC: UIViewController, UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.text = ""
     }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.text = "What is your goal?"
+    }
 
     /*
     // MARK: - Navigation
