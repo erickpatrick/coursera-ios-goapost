@@ -422,7 +422,7 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="onCreateGoalPressed:" destination="aQ9-jK-8LC" eventType="touchUpInside" id="6x3-2M-Kvx"/>
+                                            <action selector="onCreateGoalPressed:" destination="aQ9-jK-8LC" eventType="touchUpInside" id="1f3-uj-Z4X"/>
                                         </connections>
                                     </button>
                                 </subviews>
