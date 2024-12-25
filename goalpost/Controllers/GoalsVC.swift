@@ -27,6 +27,8 @@ class GoalsVC: UIViewController {
             return
         }
         
+        createGoalsVC.modalPresentationStyle = .overCurrentContext
+        
         presentDetail(createGoalsVC)
     }
 }
