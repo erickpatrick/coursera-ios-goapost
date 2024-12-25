@@ -50,7 +50,6 @@ class FinishGoalVC: UIViewController, UITextFieldDelegate {
         goal.progress = Int32(0)
         
         do {
-            print("saved data")
             try managedContext.save()
             completion(true)
         } catch {
