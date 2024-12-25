@@ -27,6 +27,11 @@ class GoalsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        fetchCoreDataObjects()
+        tableView.reloadData()
+    }
+    
+    func fetchCoreDataObjects() {
         self.fetch(completion: {(complete) in
             if complete {
                 if goals.count >= 1 {
@@ -36,7 +41,6 @@ class GoalsVC: UIViewController {
                 }
             }
         })
-        tableView.reloadData()
     }
     
     @IBAction func addNewGoalWasPressed(_ sender: Any) {
@@ -71,6 +75,40 @@ extension GoalsVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return UITableViewCell.EditingStyle.none
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { rowAction, indexPath in
+            self.removeGoal(atIndexPath: indexPath)
+            self.fetchCoreDataObjects()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        
+        deleteAction.backgroundColor = .systemRed
+        
+        let addAction = UITableViewRowAction(style: .normal, title: "ADD 1") { rowAction, indexPath in
+            self.increaseProgress(atIndexPath: indexPath)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+        
+        addAction.backgroundColor = .systemOrange
+        
+        let decreaseAction = UITableViewRowAction(style: .normal, title: "Decrease 1") { rowAction, indexPath in
+            self.decreaseProgress(atIndexPath: indexPath)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+        
+        decreaseAction.backgroundColor = .systemTeal
+        
+        return [deleteAction, addAction, decreaseAction]
+    }
+    
     func fetch(completion: (_ complete: Bool) -> ()) {
         let managedContext = appDelegate.persistentContainer.viewContext
         
@@ -82,6 +120,49 @@ extension GoalsVC: UITableViewDelegate, UITableViewDataSource {
         } catch {
             debugPrint("Could not fetch \(error.localizedDescription)")
             completion(false)
+        }
+    }
+    
+    func removeGoal(atIndexPath indexPath: IndexPath) {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        managedContext.delete(goals[indexPath.row])
+        
+        do {
+            try managedContext.save()
+        } catch {
+            debugPrint("Could not remove \(error.localizedDescription)")
+        }
+    }
+    
+    func increaseProgress(atIndexPath indexPath: IndexPath) {
+        print("entered increaseProgress")
+        updateProgress(by: 1, atIndexPath: indexPath)
+    }
+    
+    func decreaseProgress(atIndexPath indexPath: IndexPath) {
+        print("entered decreaseProgress")
+        updateProgress(by: -1, atIndexPath: indexPath)
+    }
+    
+    func updateProgress(by quantity: Int32, atIndexPath indexPath: IndexPath) {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let chosenGoal = goals[indexPath.row]
+        
+        print("entered updateProgress")
+        
+        if chosenGoal.progress < chosenGoal.target {
+            chosenGoal.progress += quantity
+        } else if quantity == -1 && chosenGoal.progress > 0 {
+            chosenGoal.progress += quantity
+        } else {
+            return
+        }
+        
+        do {
+            try managedContext.save()
+        } catch {
+            debugPrint("could not update progress \(error.localizedDescription)")
         }
     }
 }
