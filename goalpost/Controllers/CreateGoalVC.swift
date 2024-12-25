@@ -22,7 +22,7 @@ class CreateGoalVC: UIViewController {
     
     
     @IBAction func onBackButtonPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismissDetail(self)
     }
     
     @IBAction func onLongTypePressed(_ sender: Any) {
