@@ -13,7 +13,7 @@ extension UIViewController {
         transition.duration = 0.3
         transition.type = CATransitionType.push
         transition.subtype = CATransitionSubtype.fromRight
-        self.view.window?.layer.add(transition, forKey: "kCATransition")
+        self.view.window?.layer.add(transition, forKey: "CATransition")
         
         present(viewControllerToPresent, animated: false, completion: nil)
     }
@@ -23,7 +23,7 @@ extension UIViewController {
         transition.duration = 0.3
         transition.type = CATransitionType.push
         transition.subtype = CATransitionSubtype.fromLeft
-        self.view.window?.layer.add(transition, forKey: "kCATransition")
+        self.view.window?.layer.add(transition, forKey: "CATransition")
         
         dismiss(animated: false, completion: nil)
     }

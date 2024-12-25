@@ -42,7 +42,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="addGoal" title=""/>
                                         <connections>
-                                            <action selector="addNewGoalWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L0T-8K-ckl"/>
+                                            <action selector="addNewGoalWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gNM-sX-wnM"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -56,16 +56,16 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NLG-mi-Pii">
-                                <rect key="frame" x="78.666666666666671" y="204" width="235.66666666666663" height="63"/>
+                                <rect key="frame" x="0.0" y="204" width="393" height="63"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to GoalPost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFU-ii-qgh">
-                                        <rect key="frame" x="0.0" y="0.0" width="235.66666666666666" height="33"/>
+                                        <rect key="frame" x="78.666666666666671" y="0.0" width="235.66666666666663" height="33"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To begin, create a Goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YlS-4F-DgG">
-                                        <rect key="frame" x="33.666666666666657" y="41" width="168.33333333333334" height="22"/>
+                                        <rect key="frame" x="112.33333333333333" y="41" width="168.33333333333337" height="22"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -125,7 +125,6 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="70" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="ABP-6I-TF6">
                                                     <rect key="frame" x="327" y="10" width="50" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="7In-da-Rk4"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="RgE-ZG-mQX"/>
                                                         <constraint firstAttribute="width" constant="50" id="gtw-Ee-KZG"/>
                                                     </constraints>
@@ -158,15 +157,14 @@
                         <constraints>
                             <constraint firstItem="N6K-yF-9HN" firstAttribute="top" secondItem="UuC-VY-rnq" secondAttribute="bottom" id="918-pX-7jI"/>
                             <constraint firstItem="NLG-mi-Pii" firstAttribute="top" secondItem="UuC-VY-rnq" secondAttribute="bottom" constant="75" id="9Gx-X9-xqm"/>
-                            <constraint firstItem="N6K-yF-9HN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="LIW-Mm-tz9"/>
+                            <constraint firstItem="UuC-VY-rnq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EZJ-va-yYW"/>
+                            <constraint firstItem="NLG-mi-Pii" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Gxi-1Z-WOm"/>
                             <constraint firstItem="UuC-VY-rnq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="M4e-3B-H9q"/>
-                            <constraint firstItem="N6K-yF-9HN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TaG-gc-TQk"/>
                             <constraint firstItem="N6K-yF-9HN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Zyv-YN-aek"/>
                             <constraint firstItem="UuC-VY-rnq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cuK-gt-mbJ"/>
-                            <constraint firstItem="N6K-yF-9HN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="dyR-sQ-6fU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NLG-mi-Pii" secondAttribute="trailing" id="ef8-VJ-bwG"/>
                             <constraint firstItem="N6K-yF-9HN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fy2-jS-1CY"/>
                             <constraint firstItem="UuC-VY-rnq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lYJ-Ez-adC"/>
-                            <constraint firstItem="N6K-yF-9HN" firstAttribute="top" secondItem="UuC-VY-rnq" secondAttribute="bottom" id="lx0-7h-KqB"/>
                             <constraint firstItem="NLG-mi-Pii" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oX1-Qt-LvL"/>
                             <constraint firstItem="N6K-yF-9HN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qAg-Da-pyo"/>
                         </constraints>
@@ -306,7 +304,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="270-g7-UoV" firstAttribute="leading" secondItem="Xda-jg-mSU" secondAttribute="leading" constant="16" id="1Ss-wD-h3c"/>
-                            <constraint firstItem="Xda-jg-mSU" firstAttribute="trailing" secondItem="270-g7-UoV" secondAttribute="trailing" constant="16" id="97X-ju-reg"/>
                             <constraint firstItem="qR6-Mf-CoS" firstAttribute="leading" secondItem="Xda-jg-mSU" secondAttribute="leading" constant="16" id="9Az-rG-PgF"/>
                             <constraint firstItem="qaI-ob-n4a" firstAttribute="leading" secondItem="Xda-jg-mSU" secondAttribute="leading" id="DTv-va-evW"/>
                             <constraint firstItem="dDR-Ox-uwz" firstAttribute="top" secondItem="Xda-jg-mSU" secondAttribute="top" id="EoT-1E-uex"/>
@@ -314,7 +311,6 @@
                             <constraint firstItem="dDR-Ox-uwz" firstAttribute="leading" secondItem="Xda-jg-mSU" secondAttribute="leading" id="S7q-T6-5jk"/>
                             <constraint firstItem="dDR-Ox-uwz" firstAttribute="trailing" secondItem="Xda-jg-mSU" secondAttribute="trailing" id="bM1-SU-y1L"/>
                             <constraint firstItem="270-g7-UoV" firstAttribute="top" secondItem="qR6-Mf-CoS" secondAttribute="bottom" constant="10" id="gvn-ku-aql"/>
-                            <constraint firstItem="Xda-jg-mSU" firstAttribute="trailing" secondItem="qR6-Mf-CoS" secondAttribute="trailing" constant="16" id="oQU-eC-UCq"/>
                             <constraint firstItem="270-g7-UoV" firstAttribute="centerX" secondItem="iSS-0v-OiE" secondAttribute="centerX" id="sdV-Dt-42B"/>
                             <constraint firstItem="Xda-jg-mSU" firstAttribute="bottom" secondItem="qaI-ob-n4a" secondAttribute="bottom" id="vY9-ty-SEg"/>
                             <constraint firstItem="qR6-Mf-CoS" firstAttribute="top" secondItem="dDR-Ox-uwz" secondAttribute="bottom" constant="16" id="wfy-0E-xZY"/>
