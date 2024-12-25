@@ -51,7 +51,7 @@ class CreateGoalVC: UIViewController, UITextViewDelegate {
             finishGoalVC.initData(description: goalTitle.text, type: goalType)
             finishGoalVC.modalPresentationStyle = .overCurrentContext
             
-            presentDetail(finishGoalVC)
+            presentingViewController?.presentSecondaryDetails(finishGoalVC)
         }
     }
     
