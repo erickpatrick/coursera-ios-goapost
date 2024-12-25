@@ -57,10 +57,12 @@ class CreateGoalVC: UIViewController, UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.text = ""
+        textView.textColor = .black
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.text = "What is your goal?"
+        textView.textColor = .systemGray
     }
 
     /*
