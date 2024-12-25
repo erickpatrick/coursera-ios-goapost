@@ -27,6 +27,11 @@ class GoalsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        fetchCoreDataObjects()
+        tableView.reloadData()
+    }
+    
+    func fetchCoreDataObjects() {
         self.fetch(completion: {(complete) in
             if complete {
                 if goals.count >= 1 {
@@ -36,7 +41,6 @@ class GoalsVC: UIViewController {
                 }
             }
         })
-        tableView.reloadData()
     }
     
     @IBAction func addNewGoalWasPressed(_ sender: Any) {
@@ -71,6 +75,26 @@ extension GoalsVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return UITableViewCell.EditingStyle.none
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { rowAction, indexPath in
+            self.removeGoal(atIndexPath: indexPath)
+            self.fetchCoreDataObjects()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        
+        deleteAction.backgroundColor = .systemRed
+        
+        return [deleteAction]
+    }
+    
     func fetch(completion: (_ complete: Bool) -> ()) {
         let managedContext = appDelegate.persistentContainer.viewContext
         
@@ -82,6 +106,18 @@ extension GoalsVC: UITableViewDelegate, UITableViewDataSource {
         } catch {
             debugPrint("Could not fetch \(error.localizedDescription)")
             completion(false)
+        }
+    }
+    
+    func removeGoal(atIndexPath indexPath: IndexPath) {
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        managedContext.delete(goals[indexPath.row])
+        
+        do {
+            try managedContext.save()
+        } catch {
+            debugPrint("Could not remove \(error.localizedDescription)")
         }
     }
 }
