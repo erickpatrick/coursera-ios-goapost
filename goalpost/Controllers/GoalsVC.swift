@@ -10,6 +10,7 @@ import UIKit
 class GoalsVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var createGoal: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,13 @@ class GoalsVC: UIViewController {
     }
     
     @IBAction func addNewGoalWasPressed(_ sender: Any) {
-        print("button was pressed")
+        guard let createGoalsVC = storyboard?.instantiateViewController(withIdentifier: "CreateGoalVC") else {
+            return
+        }
+        
+        createGoalsVC.modalPresentationStyle = .overCurrentContext
+        
+        presentDetail(createGoalsVC)
     }
 }
 
