@@ -93,13 +93,20 @@ extension GoalsVC: UITableViewDelegate, UITableViewDataSource {
         deleteAction.backgroundColor = .systemRed
         
         let addAction = UITableViewRowAction(style: .normal, title: "ADD 1") { rowAction, indexPath in
-            self.setProgress(atIndexPath: indexPath)
+            self.increaseProgress(atIndexPath: indexPath)
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }
         
         addAction.backgroundColor = .systemOrange
         
-        return [deleteAction, addAction]
+        let decreaseAction = UITableViewRowAction(style: .normal, title: "Decrease 1") { rowAction, indexPath in
+            self.decreaseProgress(atIndexPath: indexPath)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+        
+        decreaseAction.backgroundColor = .systemTeal
+        
+        return [deleteAction, addAction, decreaseAction]
     }
     
     func fetch(completion: (_ complete: Bool) -> ()) {
@@ -128,12 +135,26 @@ extension GoalsVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func setProgress(atIndexPath indexPath: IndexPath) {
+    func increaseProgress(atIndexPath indexPath: IndexPath) {
+        print("entered increaseProgress")
+        updateProgress(by: 1, atIndexPath: indexPath)
+    }
+    
+    func decreaseProgress(atIndexPath indexPath: IndexPath) {
+        print("entered decreaseProgress")
+        updateProgress(by: -1, atIndexPath: indexPath)
+    }
+    
+    func updateProgress(by quantity: Int32, atIndexPath indexPath: IndexPath) {
         let managedContext = appDelegate.persistentContainer.viewContext
         let chosenGoal = goals[indexPath.row]
         
+        print("entered updateProgress")
+        
         if chosenGoal.progress < chosenGoal.target {
-            chosenGoal.progress += 1
+            chosenGoal.progress += quantity
+        } else if quantity == -1 && chosenGoal.progress > 0 {
+            chosenGoal.progress += quantity
         } else {
             return
         }
